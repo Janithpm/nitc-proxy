@@ -2,10 +2,15 @@ const express = require("express");
 const serverless = require("serverless-http");
 const dotenv = require("dotenv");
 const axios = require('axios')
+const cors = require('cors')
+const bodyParser = require('body-parser')
 
 dotenv.config();
 
 const app = express();
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 const router = express.Router();
 
 router.get("/health", (req, res) => {
