@@ -1,11 +1,9 @@
 const express = require("express");
 const serverless = require("serverless-http");
-const dotenv = require("dotenv");
 const axios = require('axios')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
-dotenv.config();
 
 const app = express();
 app.use(cors());
@@ -20,7 +18,7 @@ router.get("/health", (req, res) => {
 router.post('/confirm', (req, res) => {
   const csrfToken = req.body.reqid
   const clientRef = req.body.clientRef
-  const url = `https://sampath.paycorp.lk/webinterface/qw/confirm?csrfToken=${csrfToken}&authToken=${process.env.PG_AUTH_TOKEN}&clientRef=${clientRef}`
+  const url = `https://sampath.paycorp.lk/webinterface/qw/confirm?csrfToken=${csrfToken}&authToken=f37facc1-f700-4721-817c-b8643157fab8&clientRef=${clientRef}`
   axios.post(url, {})
       .then((response) => {
           const responseString = response.data
